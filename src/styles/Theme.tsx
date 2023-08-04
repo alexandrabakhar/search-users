@@ -3,20 +3,16 @@ import { GlobalStyle } from "./GlobalStyle";
 
 const theme = {
 	colors: {
-		main: "#000",
+		main: "#fff",
 		hover: "grey",
 	},
 };
 
-interface ThemeProps {
+interface IThemeProps {
 	children: React.ReactNode;
 }
 
-// export const Theme = (props: ThemeProps) => {
-// 	return <ThemeProvider theme={theme}>{props.children}</ThemeProvider>;
-// };
-
-export const Theme = ({ children }: ThemeProps) => {
+export const Theme = ({ children }: IThemeProps) => {
 	return (
 		<ThemeProvider theme={theme}>
 			<GlobalStyle />

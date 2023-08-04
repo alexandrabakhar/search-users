@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-const BASE_URL = "https://api.github.com/search/users";
+import { Response } from "../../types/IResponse";
+const BASE_URL = "https://api.github.com/";
 
 export const usersApi = createApi({
 	reducerPath: "usersApi",
@@ -18,16 +19,47 @@ export const usersApi = createApi({
 		},
 	}),
 	endpoints: (builder) => ({
-		getUsers: builder.query<[], null>({
-			query: () => "?q=Q",
+		// getUsers: builder.query<Response, number>({
+		// 	query: (limit = 10) => `?q=Q&per_page=${limit}`,
+		// }),
+		getUsers: builder.query<Response, number>({
+			query: (limit = 10) => ({
+				url: `search/users`,
+				params: {
+					q: "Q",
+					per_page: limit,
+				},
+			}),
 		}),
-        getUsersByRepositories: builder.query<[], string>({
-			query: (order) => `?q=Q&sort=repositories&order=${order}`,
+		getUsersByRepositories: builder.query<Response, string>({
+			query: (order = "desc") => ({
+				url: `search/users`,
+				params: {
+					q: "Q",
+					sort: "repositories",
+					order: order,
+				},
+			}),
 		}),
-        getUsersByName: builder.query<[], string>({
-			query: (name) => `?q=${name}`,
+		getUsersByName: builder.query<Response, string>({
+			query: (name) => ({
+				url: `search/users`,
+				params: {
+					q: name,
+				},
+			}),
 		}),
+		// getUsersByRepositories: builder.query({
+		// 	query: (order) => `?q=Q&sort=repositories&order=${order}`,
+		// }),
+		// getUsersByName: builder.query({
+		// 	query: (name) => `?q=${name}`,
+		// }),
 	}),
 });
 
-export const { useGetUsersQuery, useGetUsersByRepositoriesQuery, useGetUsersByNameQuery } = usersApi;
+export const {
+	useGetUsersQuery,
+	useGetUsersByRepositoriesQuery,
+	useGetUsersByNameQuery,
+} = usersApi;

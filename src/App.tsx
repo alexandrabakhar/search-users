@@ -1,10 +1,12 @@
-import "./App.css";
-import {  useGetUsersQuery } from "./redux/services/usersApi";
+import { Search } from "./components/Search/Search";
+import { Users } from "./components/Users/Users";
+import * as S from "./styles/styles";
 
 export const App: React.FC = () => {
-	// const {data, isSuccess} = useGetUsersQuery(null);
-	// if (isSuccess) console.log(data);
-	const {data, isSuccess} = useGetUsersQuery(null);
-	if (isSuccess) console.log(data);
-	return <div />;
+	return (
+		<S.App>
+			<Search />
+			<Users />
+		</S.App>
+	);
 };

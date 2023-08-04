@@ -46,6 +46,7 @@ export const usersApi = createApi({
 				url: `search/users`,
 				params: {
 					q: name,
+					per_page: 20,
 				},
 			}),
 		}),

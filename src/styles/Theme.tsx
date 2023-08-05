@@ -3,8 +3,15 @@ import { GlobalStyle } from "./GlobalStyle";
 
 const theme = {
 	colors: {
-		main: "#fff",
-		hover: "grey",
+		main_text: "#fff",
+		main_text_hover: "#ffc5d8",
+		input_text: "#db7093",
+		bgd: "#db7093",
+		border_default: "#fff",
+		border_accent: "#db7093",
+		img_bgd: "#fff",
+		input_bgd: "#fff",
+		label_bgd: "#fff",
 	},
 };
 

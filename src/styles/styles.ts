@@ -8,6 +8,7 @@ export const App = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	padding: 5%;
+	gap: 20px;
 `;
 
 export const Users = styled.ul`
@@ -45,7 +46,7 @@ export const Search = styled.div`
 	/* border-bottom: 1px solid #4e4e4e; */
 	border: 2px white solid;
 
-	margin-bottom: 51px;
+	/* margin-bottom: 51px; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -59,7 +60,7 @@ export const Search = styled.div`
 		font-size: 16px;
 		line-height: 24px;
 
-        outline: none;
+		outline: none;
 		background-color: white;
 		color: palevioletred;
 
@@ -73,3 +74,61 @@ export const Search = styled.div`
 		}
 	}
 `;
+
+export const Sorting = styled.div`
+	width: 70vw;
+	display: grid;
+
+	grid-template-columns: repeat(2, auto);
+
+	& h2 {
+		grid-row: 1;
+		grid-column: span 2;
+	}
+
+	& input {
+		display: none;
+	}
+
+	& label {
+		grid-row: 2;
+		display: flex;
+		align-items: center;
+	}
+	& label::before {
+		text-align: center;
+		width: 12px;
+		height: 12px;
+		content: "";
+		margin-right: 10px;
+		display: inline-block;
+		border: 1px solid white;
+		border-radius: 50px;
+		cursor: pointer;
+
+	}
+
+	& input:checked + label::before {
+		background-color: white;
+	}
+`;
+
+// export const Button = styled.button`
+// 	width: 200px;
+// 	height: 50px;
+// 	/* border-radius: 50px; */
+// 	border: 2px white solid;
+// 	/* background-color: palevioletred;
+// 	color: white; */
+// 	cursor: pointer;
+// 	color: palevioletred;
+// 	background-color: white;
+// 	& span {
+// 		width: 100%;
+// 		height: 100%;
+// 		display: block;
+// 		border: 2px palevioletred solid;
+// 		/* background-color: palevioletred; */
+// 		color: palevioletred;
+// 	}
+// `;

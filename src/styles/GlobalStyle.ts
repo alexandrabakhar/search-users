@@ -11,9 +11,10 @@ export const GlobalStyle = createGlobalStyle`
         background: palevioletred;
         font-family: 'Courier New', Courier, monospace;
         & input {
-        font-family: 'Courier New', Courier, monospace;
-
+            font-family: 'Courier New', Courier, monospace;
         }
-        /* font-family: fantasy; */
+        & button {
+            font-family: 'Courier New', Courier, monospace;
+        }
     }
 `;

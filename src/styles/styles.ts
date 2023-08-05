@@ -8,6 +8,7 @@ export const App = styled.div`
 	justify-content: center;
 	flex-direction: column;
 	padding: 5%;
+	gap: 20px;
 `;
 
 export const Users = styled.ul`
@@ -20,6 +21,8 @@ export const Users = styled.ul`
 	justify-items: center;
 
 	gap: 10px;
+
+	position: relative;
 `;
 
 export const User = styled.li`
@@ -34,18 +37,22 @@ export const User = styled.li`
 	/* background-color: #fff; */
 	padding: 10px;
 
+	& h2 {
+		word-break: break-all;
+		align-items: center;
+	}
+
 	& img {
-		max-height: 150px;
+		min-height: 50px;
+		max-width: 150px;
 		background-color: white;
 	}
 `;
 
 export const Search = styled.div`
 	width: 70vw;
-	/* border-bottom: 1px solid #4e4e4e; */
 	border: 2px white solid;
 
-	margin-bottom: 51px;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -59,7 +66,7 @@ export const Search = styled.div`
 		font-size: 16px;
 		line-height: 24px;
 
-        outline: none;
+		outline: none;
 		background-color: white;
 		color: palevioletred;
 
@@ -71,5 +78,43 @@ export const Search = styled.div`
 			font-size: 16px;
 			line-height: 24px;
 		}
+	}
+`;
+
+export const Sorting = styled.div`
+	width: 70vw;
+	display: grid;
+
+	grid-template-columns: repeat(2, auto);
+
+	& h2 {
+		grid-row: 1;
+		grid-column: span 2;
+	}
+
+	& input {
+		display: none;
+	}
+
+	& label {
+		grid-row: 2;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+	}
+	& label::before {
+		text-align: center;
+		width: 12px;
+		height: 12px;
+		content: "";
+		margin-right: 10px;
+		display: inline-block;
+		border: 1px solid white;
+		border-radius: 50px;
+		cursor: pointer;
+	}
+
+	& input:checked + label::before {
+		background-color: white;
 	}
 `;

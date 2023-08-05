@@ -1,6 +1,20 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { Response } from "../../types/IResponse";
 const BASE_URL = "https://api.github.com/";
+interface IArg {
+	name: string;
+	orderType?: string;
+}
+
+interface IObj {
+	url: string;
+	params: {
+		q: string;
+		per_page: number;
+		order?: string;
+		sort?: string;
+	};
+}
 
 export const usersApi = createApi({
 	reducerPath: "usersApi",
@@ -22,45 +36,48 @@ export const usersApi = createApi({
 		// getUsers: builder.query<Response, number>({
 		// 	query: (limit = 10) => `?q=Q&per_page=${limit}`,
 		// }),
-		getUsers: builder.query<Response, number>({
-			query: (limit = 10) => ({
-				url: `search/users`,
-				params: {
-					q: "Q",
-					per_page: limit,
-				},
-			}),
-		}),
-		getUsersByRepositories: builder.query<Response, string>({
-			query: (order = "desc") => ({
-				url: `search/users`,
-				params: {
-					q: "Q",
-					sort: "repositories",
-					order: order,
-				},
-			}),
-		}),
-		getUsersByName: builder.query<Response, string>({
-			query: (name) => ({
-				url: `search/users`,
-				params: {
-					q: name,
-					per_page: 20,
-				},
-			}),
-		}),
-		// getUsersByRepositories: builder.query({
-		// 	query: (order) => `?q=Q&sort=repositories&order=${order}`,
+		// getUsers: builder.query<Response, number>({
+		// 	query: (limit = 10) => ({
+		// 		url: `search/users`,
+		// 		params: {
+		// 			q: "Q",
+		// 			per_page: limit,
+		// 		},
+		// 	}),
 		// }),
-		// getUsersByName: builder.query({
-		// 	query: (name) => `?q=${name}`,
+		// getUsersByRepositories: builder.query<Response, string>({
+		// 	query: (order = "desc") => ({
+		// 		url: `search/users`,
+		// 		params: {
+		// 			q: "Q",
+		// 			sort: "repositories",
+		// 			order: order,
+		// 		},
+		// 	}),
 		// }),
+
+		getUsersByName: builder.query<Response, IArg>({
+			query: ({ name, orderType }) => {
+				const obj: IObj = {
+					url: `search/users`,
+					params: {
+						q: name,
+						per_page: 20,
+					},
+				};
+				if (orderType) {
+					obj.params.order = orderType;
+					obj.params.sort = "repositories";
+				}
+
+				return obj;
+			},
+		}),
 	}),
 });
 
 export const {
-	useGetUsersQuery,
-	useGetUsersByRepositoriesQuery,
+	// useGetUsersQuery,
+	// useGetUsersByRepositoriesQuery,
 	useGetUsersByNameQuery,
 } = usersApi;

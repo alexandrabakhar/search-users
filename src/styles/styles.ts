@@ -21,6 +21,8 @@ export const Users = styled.ul`
 	justify-items: center;
 
 	gap: 10px;
+
+	position: relative;
 `;
 
 export const User = styled.li`
@@ -35,18 +37,22 @@ export const User = styled.li`
 	/* background-color: #fff; */
 	padding: 10px;
 
+	& h2 {
+		word-break: break-all;
+		align-items: center;
+	}
+
 	& img {
-		max-height: 150px;
+		min-height: 50px;
+		max-width: 150px;
 		background-color: white;
 	}
 `;
 
 export const Search = styled.div`
 	width: 70vw;
-	/* border-bottom: 1px solid #4e4e4e; */
 	border: 2px white solid;
 
-	/* margin-bottom: 51px; */
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -94,6 +100,7 @@ export const Sorting = styled.div`
 		grid-row: 2;
 		display: flex;
 		align-items: center;
+		cursor: pointer;
 	}
 	& label::before {
 		text-align: center;
@@ -105,30 +112,9 @@ export const Sorting = styled.div`
 		border: 1px solid white;
 		border-radius: 50px;
 		cursor: pointer;
-
 	}
 
 	& input:checked + label::before {
 		background-color: white;
 	}
 `;
-
-// export const Button = styled.button`
-// 	width: 200px;
-// 	height: 50px;
-// 	/* border-radius: 50px; */
-// 	border: 2px white solid;
-// 	/* background-color: palevioletred;
-// 	color: white; */
-// 	cursor: pointer;
-// 	color: palevioletred;
-// 	background-color: white;
-// 	& span {
-// 		width: 100%;
-// 		height: 100%;
-// 		display: block;
-// 		border: 2px palevioletred solid;
-// 		/* background-color: palevioletred; */
-// 		color: palevioletred;
-// 	}
-// `;

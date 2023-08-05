@@ -36,34 +36,26 @@ export const usersApi = createApi({
 		// getUsers: builder.query<Response, number>({
 		// 	query: (limit = 10) => `?q=Q&per_page=${limit}`,
 		// }),
-		getUsers: builder.query<Response, number>({
-			query: (limit = 10) => ({
-				url: `search/users`,
-				params: {
-					q: "Q",
-					per_page: limit,
-				},
-			}),
-		}),
-		getUsersByRepositories: builder.query<Response, string>({
-			query: (order = "desc") => ({
-				url: `search/users`,
-				params: {
-					q: "Q",
-					sort: "repositories",
-					order: order,
-				},
-			}),
-		}),
-		// getUsersByName: builder.query<Response, IArg>({
-		// 	query: ({ name, order }) => ({
+		// getUsers: builder.query<Response, number>({
+		// 	query: (limit = 10) => ({
 		// 		url: `search/users`,
 		// 		params: {
-		// 			q: name,
-		// 			per_page: 20,
+		// 			q: "Q",
+		// 			per_page: limit,
 		// 		},
 		// 	}),
 		// }),
+		// getUsersByRepositories: builder.query<Response, string>({
+		// 	query: (order = "desc") => ({
+		// 		url: `search/users`,
+		// 		params: {
+		// 			q: "Q",
+		// 			sort: "repositories",
+		// 			order: order,
+		// 		},
+		// 	}),
+		// }),
+
 		getUsersByName: builder.query<Response, IArg>({
 			query: ({ name, orderType }) => {
 				const obj: IObj = {
@@ -79,26 +71,13 @@ export const usersApi = createApi({
 				}
 
 				return obj;
-				// return {
-				// 	url: `search/users`,
-				// 	params: {
-				// 		q: name,
-				// 		per_page: 20,
-				// 	},
-				// };
 			},
 		}),
-		// getUsersByRepositories: builder.query({
-		// 	query: (order) => `?q=Q&sort=repositories&order=${order}`,
-		// }),
-		// getUsersByName: builder.query({
-		// 	query: (name) => `?q=${name}`,
-		// }),
 	}),
 });
 
 export const {
-	useGetUsersQuery,
-	useGetUsersByRepositoriesQuery,
+	// useGetUsersQuery,
+	// useGetUsersByRepositoriesQuery,
 	useGetUsersByNameQuery,
 } = usersApi;

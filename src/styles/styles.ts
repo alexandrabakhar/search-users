@@ -35,17 +35,27 @@ export const User = styled.li`
 	justify-content: center;
 	flex-direction: column;
 	padding: 10px;
+	cursor: pointer;
+	transition: border 0.3s;
 
 	& h2 {
-		word-break: break-all;
+		word-break: break-word;
 		align-items: center;
+		transition: color 0.3s;
 	}
 
-	& img {
-		min-height: 50px;
-		max-width: 150px;
-		background-color: ${(props) => props.theme.colors.img_bgd};
+	&:hover {
+		border: 2px solid ${(props) => props.theme.colors.text_hover};
+		& h2 {
+			color: ${(props) => props.theme.colors.text_hover};
+		}
 	}
+`;
+
+export const AvatarImg = styled.img`
+	min-height: 50px;
+	max-width: 150px;
+	background-color: ${(props) => props.theme.colors.img_bgd};
 `;
 
 export const Search = styled.div`
@@ -101,9 +111,10 @@ export const Sorting = styled.div`
 		letter-spacing: 1px;
 
 		margin-right: 20px;
+		transition: all 0.3s;
 
 		&:hover {
-			color: ${(props) => props.theme.colors.main_text_hover};
+			color: ${(props) => props.theme.colors.text_hover};
 		}
 	}
 	& label::before {
@@ -119,8 +130,67 @@ export const Sorting = styled.div`
 		border-radius: 50px;
 		cursor: pointer;
 	}
+	& input:checked + label {
+		color: ${(props) => props.theme.colors.label_checked};
+	}
 
 	& input:checked + label::before {
 		background-color: transparent;
+	}
+`;
+
+export const ModalWrapper = styled.div`
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+
+	cursor: pointer;
+
+	z-index: 10;
+`;
+
+export const Modal = styled.div`
+	width: 300px;
+	height: 360px;
+	background-color: #ffffff;
+	border: 2px solid ${(props) => props.theme.colors.border_default};
+
+	cursor: default;
+	& * {
+		color: ${(props) => props.theme.colors.input_text};
+	}
+`;
+
+export const ModalContent = styled.div`
+	width: 100%;
+	height: 100%;
+	border: 3px solid ${(props) => props.theme.colors.border_accent};
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	cursor: default;
+	padding: 20px;
+	& * {
+		color: ${(props) => props.theme.colors.modal_text};
+		/* word-break: break-all; */
+		/* hyphens: auto; */
+		word-wrap: break-word;
+		text-align: center;
+	}
+
+	& a:hover {
+		color: ${(props) => props.theme.colors.text_hover};
 	}
 `;

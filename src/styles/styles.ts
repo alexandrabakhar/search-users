@@ -28,13 +28,12 @@ export const Users = styled.ul`
 export const User = styled.li`
 	height: 200px;
 	width: 200px;
-	color: palevioletred;
-	border: 2px solid white;
+	border: 2px solid ${(props) => props.theme.colors.border_default};
+
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	/* background-color: #fff; */
 	padding: 10px;
 
 	& h2 {
@@ -45,13 +44,13 @@ export const User = styled.li`
 	& img {
 		min-height: 50px;
 		max-width: 150px;
-		background-color: white;
+		background-color: ${(props) => props.theme.colors.img_bgd};
 	}
 `;
 
 export const Search = styled.div`
 	width: 70vw;
-	border: 2px white solid;
+	border: 2px solid ${(props) => props.theme.colors.border_default};
 
 	display: flex;
 	flex-direction: row;
@@ -59,7 +58,7 @@ export const Search = styled.div`
 
 	& input {
 		flex-grow: 100;
-		border: 3px palevioletred solid;
+		border: 3px solid ${(props) => props.theme.colors.border_accent};
 		padding: 13px 10px 14px;
 		font-style: normal;
 		font-weight: 400;
@@ -67,12 +66,11 @@ export const Search = styled.div`
 		line-height: 24px;
 
 		outline: none;
-		background-color: white;
-		color: palevioletred;
+		background-color: ${(props) => props.theme.colors.input_bgd};
+		color: ${(props) => props.theme.colors.input_text};
 
 		&::placeholder {
-			background-color: transparent;
-			color: var(--text-color-main);
+			color: ${(props) => props.theme.colors.input_text};
 			font-style: normal;
 			font-weight: 400;
 			font-size: 16px;
@@ -83,13 +81,11 @@ export const Search = styled.div`
 
 export const Sorting = styled.div`
 	width: 70vw;
-	display: grid;
 
-	grid-template-columns: repeat(2, auto);
+	margin-left: 10px;
 
 	& h2 {
-		grid-row: 1;
-		grid-column: span 2;
+		margin-bottom: 10px;
 	}
 
 	& input {
@@ -97,10 +93,18 @@ export const Sorting = styled.div`
 	}
 
 	& label {
-		grid-row: 2;
-		display: flex;
-		align-items: center;
 		cursor: pointer;
+		transition: color 0.3s;
+		display: inline-flex;
+		align-items: center;
+		font-weight: bold;
+		letter-spacing: 1px;
+
+		margin-right: 20px;
+
+		&:hover {
+			color: ${(props) => props.theme.colors.main_text_hover};
+		}
 	}
 	& label::before {
 		text-align: center;
@@ -109,12 +113,14 @@ export const Sorting = styled.div`
 		content: "";
 		margin-right: 10px;
 		display: inline-block;
-		border: 1px solid white;
+		border: 1px solid ${(props) => props.theme.colors.border_default};
+		background-color: ${(props) => props.theme.colors.label_bgd};
+
 		border-radius: 50px;
 		cursor: pointer;
 	}
 
 	& input:checked + label::before {
-		background-color: white;
+		background-color: transparent;
 	}
 `;

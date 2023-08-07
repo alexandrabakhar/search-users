@@ -7,7 +7,7 @@ export const ThemeSwitcher = () => {
 	const currentTheme = useAppSelector((state) => state.theme.theme);
 
 	const handleThemeSwitch = () => {
-		dispatch(setTheme(currentTheme === "bright" ? "default" : "bright"));
+		dispatch(setTheme(currentTheme === "bright" ? "dim" : "bright"));
 	};
 
 	return (

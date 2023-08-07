@@ -20,7 +20,7 @@ const brightTheme = {
 	},
 };
 
-const defaultTheme = {
+const dimTheme = {
 	colors: {
 		main_text: "#fff",
 		text_hover: "#000",
@@ -42,7 +42,7 @@ export const Theme = ({ children }: IPropsChildren) => {
 
 	return (
 		<ThemeProvider
-			theme={currentTheme === "bright" ? defaultTheme : brightTheme}
+			theme={currentTheme === "bright" ? dimTheme : brightTheme}
 		>
 			<GlobalStyle />
 			{children}

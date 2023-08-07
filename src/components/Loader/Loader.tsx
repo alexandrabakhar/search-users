@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-// import * as S from "../../styles/styles";
+import { IIsFetching } from "../../types/interfaces";
 
-interface IIsFetching {
-	isFetching: boolean;
-}
+
 export const Loader = ({ isFetching }: IIsFetching) => {
 	const [filled, setFilled] = useState(0);
 	const [isRunning, setIsRunning] = useState(false);

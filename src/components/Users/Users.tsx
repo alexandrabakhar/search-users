@@ -1,36 +1,87 @@
-import { useGetUsersByNameQuery } from "../../redux/services/usersApi";
-import { IClassName } from "../../types/IClassName";
+import { IClassName } from "../../types/interfaces";
 import { User } from "../User/User";
 import * as S from "../../styles/styles";
 import { useAppSelector } from "../../redux/hooks";
 import { Loader } from "../Loader/Loader";
 import { useEffect, useState } from "react";
 import { ModalUser } from "../ModalUser/ModalUser";
-import { IUser } from "../../types/IUser";
+import axios from "axios";
+import { IUser } from "../../types/interfaces";
 
 export const Users = ({ className }: IClassName) => {
 	const searchText = useAppSelector((state) => state.filter.search);
 	const filterRep = useAppSelector((state) => state.filter.repositories);
+
+	const [users, setUsers] = useState([] as IUser[]);
+	const [fetching, setFetching] = useState(true);
+
+	const [currentPage, setCurrentPage] = useState(1);
 	const defaultNameParam = "Q";
-	const [isLoader, setIsLoader] = useState(false);
+	const name = searchText ? searchText : defaultNameParam;
+	const token = import.meta.env.VITE_TOKEN;
+	const URL = filterRep
+		? `https://api.github.com/search/users?q=${name}&per_page=20&page=${currentPage}&order=${filterRep}&sort=repositories`
+		: `https://api.github.com/search/users?q=${name}&per_page=20&page=${currentPage}`;
+
+
+	const resetStates = () => {
+		setFetching(true);
+		setUsers([]);
+		setCurrentPage(1);
+	};
+
+	useEffect(() => {
+		resetStates();
+	}, [name, filterRep]);
+
+	const scrollHandler = (e: Event) => {
+		const target = e.target as Document;
+		if (
+			target.documentElement.scrollHeight -
+				(target.documentElement.scrollTop + window.innerHeight) <
+			300
+		) {
+			setFetching(true);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener("scroll", scrollHandler);
+
+		return () => document.removeEventListener("scroll", scrollHandler);
+	}, []);
+
+	useEffect(() => {
+		if (fetching) {
+			axios
+				.get(URL, {
+					headers: {
+						Accept: "application/vnd.github+json",
+						Authorization: `Bearer ${token}`,
+						"X-GitHub-Api-Version": "2022-11-28",
+					},
+				})
+				.then((response) => {
+					setUsers([...users, ...response.data.items]);
+					setCurrentPage((prevState) => prevState + 1);
+				})
+				.finally(() => setFetching(false));
+		}
+	}, [URL, fetching, name, token, users]);
+
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalUserContent, setModalUserContent] = useState({} as IUser);
 
-	const paramsObj = {
-		name: searchText ? searchText : defaultNameParam,
-		orderType: filterRep ? filterRep : "",
-	};
-	const { data: users, isFetching } = useGetUsersByNameQuery(paramsObj);
-
-	useEffect(() => {
-		setIsLoader(isFetching);
-	}, [isFetching]);
-
-	const usersArr = users?.items;
 	const handleOpenModalUser = (content: IUser) => {
 		setModalUserContent(content);
 		setIsModalOpen(true);
 	};
+
+	const [isLoader, setIsLoader] = useState(false);
+	useEffect(() => {
+		setIsLoader(fetching);
+	}, [fetching]);
+
 	return (
 		<S.Users className={className}>
 			<ModalUser
@@ -40,10 +91,10 @@ export const Users = ({ className }: IClassName) => {
 			/>
 			<Loader isFetching={isLoader} />
 
-			{usersArr?.map((user) => {
+			{users.map((user, id) => {
 				return (
 					<User
-						key={user.id}
+						key={id}
 						user={user}
 						handleOpenModalUser={handleOpenModalUser}
 					/>

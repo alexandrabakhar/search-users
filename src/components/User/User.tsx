@@ -1,11 +1,7 @@
-import { IUser } from "../../types/IUser";
 import * as S from "../../styles/styles";
+import { IPropsUser } from "../../types/interfaces";
 
-interface IPropsUser {
-	user: IUser;
-	className?: string;
-	handleOpenModalUser: (user: IUser) => void;
-}
+
 
 export const User = ({ user, className, handleOpenModalUser }: IPropsUser) => {
 	const { login, avatar_url } = user;

@@ -1,11 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IFilterSliceState } from "../../types/interfaces";
 
-type FilterState ={
-    repositories: string;
-    search: string;
-
-}
-const initialState: FilterState = {
+const initialState: IFilterSliceState = {
 	repositories: "",
 	search: "",
 };

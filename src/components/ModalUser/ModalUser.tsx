@@ -13,8 +13,9 @@ export const ModalUser = ({
 			<S.ModalWrapper
 				className={className}
 				onClick={() => {
-					setIsOpen(!isOpen);
+					setIsOpen && setIsOpen(!isOpen);
 				}}
+				data-testid="modal-user"
 			>
 				<S.Modal onClick={(e) => e.stopPropagation()}>
 					<S.ModalContent>

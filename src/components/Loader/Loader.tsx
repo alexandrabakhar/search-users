@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { IIsFetching } from "../../types/interfaces";
 
-
 export const Loader = ({ isFetching }: IIsFetching) => {
 	const [filled, setFilled] = useState(0);
 	const [isRunning, setIsRunning] = useState(false);
@@ -26,6 +25,7 @@ export const Loader = ({ isFetching }: IIsFetching) => {
 					position: "absolute",
 					top: "-12px",
 				}}
+				data-testid="loader"
 			></div>
 		)
 	);

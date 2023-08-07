@@ -19,7 +19,14 @@ export type IUser = {
 	type: string;
 	url: string;
 };
+export interface IFilterSliceState {
+	repositories?: string;
+	search?: string;
+}
 
+export interface IThemeSliceState {
+	theme: string;
+}
 
 export interface IClassName {
 	className?: string;
@@ -31,7 +38,7 @@ export interface IIsFetching {
 
 export interface IModalUserProps {
 	isOpen: boolean;
-	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
 	className?: string;
 	modalUserContent: IUser;
 }
@@ -39,9 +46,10 @@ export interface IModalUserProps {
 export interface IPropsUser {
 	user: IUser;
 	className?: string;
-	handleOpenModalUser: (user: IUser) => void;
+	openModalUser: (user: IUser) => void;
+	onClick?: () => void;
 }
 
-export interface IThemeProps {
+export interface IPropsChildren {
 	children: React.ReactNode;
 }

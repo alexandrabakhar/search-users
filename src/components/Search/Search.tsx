@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../redux/hooks";
 import * as S from "../../styles/styles";
-import { setSearch } from "../../redux/slices/filter";
+import { setSearch } from "../../redux/slices/filterSlice";
 import { IClassName } from "../../types/interfaces";
-
 
 export const Search = ({ className }: IClassName) => {
 	const dispatch = useAppDispatch();
@@ -17,6 +16,8 @@ export const Search = ({ className }: IClassName) => {
 			<input
 				placeholder="Поиск"
 				onChange={(e) => setSearchText(e.target.value.trim())}
+				name="search"
+				data-testid="search"
 			/>
 		</S.Search>
 	);

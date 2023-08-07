@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { setTheme } from "../../redux/slices/theme";
+import { setTheme } from "../../redux/slices/themeSlice";
 import * as S from "../../styles/styles";
 
 export const ThemeSwitcher = () => {

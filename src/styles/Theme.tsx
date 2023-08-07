@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
 import { useAppSelector } from "../redux/hooks";
-import { IThemeProps } from "../types/interfaces";
+import { IPropsChildren } from "../types/interfaces";
 
 const brightTheme = {
 	colors: {
@@ -37,11 +37,8 @@ const defaultTheme = {
 	},
 };
 
-
-
-export const Theme = ({ children }: IThemeProps) => {
+export const Theme = ({ children }: IPropsChildren) => {
 	const currentTheme = useAppSelector((state) => state.theme.theme);
-	console.log(currentTheme);
 
 	return (
 		<ThemeProvider

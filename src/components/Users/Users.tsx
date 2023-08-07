@@ -72,7 +72,7 @@ export const Users = ({ className }: IClassName) => {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalUserContent, setModalUserContent] = useState({} as IUser);
 
-	const handleOpenModalUser = (content: IUser) => {
+	const openModalUser = (content: IUser) => {
 		setModalUserContent(content);
 		setIsModalOpen(true);
 	};
@@ -96,7 +96,7 @@ export const Users = ({ className }: IClassName) => {
 					<User
 						key={id}
 						user={user}
-						handleOpenModalUser={handleOpenModalUser}
+						openModalUser={openModalUser}
 					/>
 				);
 			})}

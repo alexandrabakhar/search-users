@@ -20,9 +20,8 @@ export const Users = ({ className }: IClassName) => {
 	const name = searchText ? searchText : defaultNameParam;
 	const token = import.meta.env.VITE_TOKEN;
 	const URL = filterRep
-		? `https://api.github.com/search/users?q=${name}&per_page=20&page=${currentPage}&order=${filterRep}&sort=repositories`
-		: `https://api.github.com/search/users?q=${name}&per_page=20&page=${currentPage}`;
-
+		? `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}&order=${filterRep}&sort=repositories`
+		: `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}`;
 
 	const resetStates = () => {
 		setFetching(true);
@@ -93,11 +92,7 @@ export const Users = ({ className }: IClassName) => {
 
 			{users.map((user, id) => {
 				return (
-					<User
-						key={id}
-						user={user}
-						openModalUser={openModalUser}
-					/>
+					<User key={id} user={user} openModalUser={openModalUser} />
 				);
 			})}
 		</S.Users>

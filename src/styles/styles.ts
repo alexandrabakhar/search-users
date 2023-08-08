@@ -23,8 +23,6 @@ export const Users = styled.ul`
 	justify-items: center;
 
 	gap: 10px;
-
-	position: relative;
 `;
 const appear = keyframes`
 		0% {
@@ -207,14 +205,12 @@ export const ModalContent = styled.div`
 	}
 `;
 
-export const Arrow = styled.svg`
+const Svg = styled.svg`
 	position: fixed;
 	height: 30px;
 	width: 30px;
 	fill: #fff;
-	transform: rotate(270deg);
 	top: 90%;
-	left: 90%;
 	z-index: 10;
 	cursor: pointer;
 	transition: fill 0.3s;
@@ -222,19 +218,11 @@ export const Arrow = styled.svg`
 		fill: #000;
 	}
 `;
+export const Arrow = styled(Svg)`
+	transform: rotate(270deg);
+	left: calc(94% - 40px);
+`;
 
-export const ThemeSwitcher = styled.svg`
-	position: fixed;
-	height: 30px;
-	width: 30px;
-	fill: #fff;
-	top: 90%;
-	left: 95%;
-	z-index: 10;
-	cursor: pointer;
-	transition: fill 0.3s;
-	/* transform: scale(40%); */
-	&:hover {
-		fill: #000;
-	}
+export const ThemeSwitcher = styled(Svg)`
+	left: calc(99% - 60px);
 `;

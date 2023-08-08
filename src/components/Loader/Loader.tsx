@@ -22,8 +22,8 @@ export const Loader = ({ isFetching }: IIsFetching) => {
 					height: "2px",
 					width: `${filled}%`,
 					backgroundColor: `white`,
-					position: "absolute",
-					top: "-12px",
+					position: "fixed",
+					top: "calc(100% - 2px)",
 				}}
 				data-testid="loader"
 			></div>

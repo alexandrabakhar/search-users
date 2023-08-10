@@ -19,7 +19,7 @@ export const Users = ({ className }: IClassName) => {
 	const defaultNameParam = "Q";
 	const name = searchText ? searchText : defaultNameParam;
 
-	const GITHUB_TOKEN = "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";
+	const GITHUB_TOKEN = "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";
 	const URL = filterRep
 		? `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}&order=${filterRep}&sort=repositories`
 		: `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}`;

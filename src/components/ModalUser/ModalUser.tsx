@@ -1,27 +1,21 @@
 import * as S from "../../styles/styles";
-import { IUser } from "../../types/IUser";
+import { IModalUserProps } from "../../types/Interfaces";
 
-interface IModalUserProps {
-	isOpen: boolean;
-	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-	className?: string;
-	modalUserContent: IUser;
-}
 export const ModalUser = ({
 	isOpen,
 	setIsOpen,
 	className,
 	modalUserContent,
 }: IModalUserProps) => {
-	console.log(modalUserContent);
 	const { id, login, html_url, avatar_url } = modalUserContent;
 	return (
 		isOpen && (
 			<S.ModalWrapper
 				className={className}
 				onClick={() => {
-					setIsOpen(!isOpen);
+					setIsOpen && setIsOpen(!isOpen);
 				}}
+				data-testid="modal-user"
 			>
 				<S.Modal onClick={(e) => e.stopPropagation()}>
 					<S.ModalContent>

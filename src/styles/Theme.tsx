@@ -1,16 +1,12 @@
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
+import { useAppSelector } from "../redux/hooks";
+import { IPropsChildren } from "../types/Interfaces";
 
-const theme = {
+const brightTheme = {
 	colors: {
 		main_text: "#fff",
-		// text_hover: "#ffc5d8",
-		// text_hover: "#a74f77",
-		// text_hover: "#ff94c2",
-		// text_hover: "#f9c5d8",
 		text_hover: "#000",
-
-
 
 		input_text: "#db7093",
 		bgd: "#db7093",
@@ -24,13 +20,30 @@ const theme = {
 	},
 };
 
-interface IThemeProps {
-	children: React.ReactNode;
-}
+const dimTheme = {
+	colors: {
+		main_text: "#fff",
+		text_hover: "#000",
 
-export const Theme = ({ children }: IThemeProps) => {
+		input_text: "#999999",
+		bgd: "#999999",
+		border_default: "#fff",
+		border_accent: "#999999",
+		img_bgd: "#fff",
+		input_bgd: "#fff",
+		label_bgd: "#fff",
+		label_checked: "#000",
+		modal_text: "#999999",
+	},
+};
+
+export const Theme = ({ children }: IPropsChildren) => {
+	const currentTheme = useAppSelector((state) => state.theme.theme);
+
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider
+			theme={currentTheme === "bright" ? dimTheme : brightTheme}
+		>
 			<GlobalStyle />
 			{children}
 		</ThemeProvider>

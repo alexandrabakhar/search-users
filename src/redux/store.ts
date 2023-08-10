@@ -1,15 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { usersApi } from "./services/usersApi";
-import filterReducer from "./slices/filter";
+import filterReducer from "./slices/filterSlice";
+import themeReducer from "./slices/themeSlice";
 
 export const store = configureStore({
 	reducer: {
 		filter: filterReducer,
-		[usersApi.reducerPath]: usersApi.reducer,
+		theme: themeReducer,
 	},
-
-	middleware: (getDefaultMiddleware) =>
-		getDefaultMiddleware().concat([usersApi.middleware]),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

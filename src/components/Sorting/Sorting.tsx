@@ -1,11 +1,11 @@
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
-import { setRepositories } from "../../redux/slices/filter";
+import { setRepositories } from "../../redux/slices/filterSlice";
 import * as S from "../../styles/styles";
 
 export const Sorting = () => {
-	const selectedRepositories = useAppSelector(
-		(state) => state.filter.repositories
-	);
+	const selectedRepositories =
+		useAppSelector((state) => state.filter.repositories) || "";
+
 	const dispatch = useAppDispatch();
 
 	const handleSelectFilter = (

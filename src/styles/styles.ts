@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const App = styled.div`
 	height: 100%;
@@ -9,6 +9,8 @@ export const App = styled.div`
 	flex-direction: column;
 	padding: 5%;
 	gap: 20px;
+
+	position: relative;
 `;
 
 export const Users = styled.ul`
@@ -21,8 +23,15 @@ export const Users = styled.ul`
 	justify-items: center;
 
 	gap: 10px;
+`;
+const appear = keyframes`
+		0% {
+			opacity: 0;
+		}
 
-	position: relative;
+		100% {
+			opacity: 1;
+		}
 `;
 
 export const User = styled.li`
@@ -36,13 +45,15 @@ export const User = styled.li`
 	flex-direction: column;
 	padding: 10px;
 	cursor: pointer;
-	transition: border 0.3s;
+	transition: border 0.3s linear;
 
 	& h2 {
 		word-break: break-word;
 		align-items: center;
 		transition: color 0.3s;
 	}
+
+	animation: ${appear} 0.7s;
 
 	&:hover {
 		border: 2px solid ${(props) => props.theme.colors.text_hover};
@@ -125,7 +136,6 @@ export const Sorting = styled.div`
 		margin-right: 10px;
 		display: inline-block;
 		border: 1px solid ${(props) => props.theme.colors.border_default};
-		background-color: ${(props) => props.theme.colors.label_bgd};
 
 		border-radius: 50px;
 		cursor: pointer;
@@ -135,7 +145,7 @@ export const Sorting = styled.div`
 	}
 
 	& input:checked + label::before {
-		background-color: transparent;
+		border: 1px solid ${(props) => props.theme.colors.label_checked};
 	}
 `;
 
@@ -193,4 +203,26 @@ export const ModalContent = styled.div`
 	& a:hover {
 		color: ${(props) => props.theme.colors.text_hover};
 	}
+`;
+
+const Svg = styled.svg`
+	position: fixed;
+	height: 30px;
+	width: 30px;
+	fill: #fff;
+	top: 90%;
+	z-index: 10;
+	cursor: pointer;
+	transition: fill 0.3s;
+	&:hover {
+		fill: #000;
+	}
+`;
+export const Arrow = styled(Svg)`
+	transform: rotate(270deg);
+	left: calc(94% - 40px);
+`;
+
+export const ThemeSwitcher = styled(Svg)`
+	left: calc(99% - 60px);
 `;

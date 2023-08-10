@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-// import * as S from "../../styles/styles";
+import { IIsFetching } from "../../types/Interfaces";
 
-interface IIsFetching {
-	isFetching: boolean;
-}
 export const Loader = ({ isFetching }: IIsFetching) => {
 	const [filled, setFilled] = useState(0);
 	const [isRunning, setIsRunning] = useState(false);
@@ -25,9 +22,10 @@ export const Loader = ({ isFetching }: IIsFetching) => {
 					height: "2px",
 					width: `${filled}%`,
 					backgroundColor: `white`,
-					position: "absolute",
-					top: "-12px",
+					position: "fixed",
+					top: "calc(100% - 2px)",
 				}}
+				data-testid="loader"
 			></div>
 		)
 	);

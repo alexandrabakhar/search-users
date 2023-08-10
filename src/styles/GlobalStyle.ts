@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
 	    color: ${(props) => props.theme.colors.main_text};
     }
     body {
-        background: palevioletred;
+        background: ${(props) => props.theme.colors.bgd};
         font-family: 'Courier New', Courier, monospace;
         & input {
             font-family: 'Courier New', Courier, monospace;

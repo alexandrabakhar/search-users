@@ -77,6 +77,7 @@ export const Search = styled.div`
 	flex-direction: row;
 	align-items: center;
 
+	position: relative;
 	& input {
 		flex-grow: 100;
 		border: 3px solid ${(props) => props.theme.colors.border_accent};
@@ -206,12 +207,12 @@ export const ModalContent = styled.div`
 `;
 
 const Svg = styled.svg`
-	position: fixed;
 	height: 30px;
 	width: 30px;
 	fill: #fff;
-	top: 90%;
-	z-index: 10;
+	position: fixed;
+	left: 88%;
+
 	cursor: pointer;
 	transition: fill 0.3s;
 	&:hover {
@@ -220,9 +221,9 @@ const Svg = styled.svg`
 `;
 export const Arrow = styled(Svg)`
 	transform: rotate(270deg);
-	left: calc(94% - 40px);
+	top: 90%;
 `;
 
 export const ThemeSwitcher = styled(Svg)`
-	left: calc(99% - 60px);
+	top: center;
 `;

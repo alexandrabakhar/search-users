@@ -18,7 +18,8 @@ export const Users = ({ className }: IClassName) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const defaultNameParam = "Q";
 	const name = searchText ? searchText : defaultNameParam;
-	const GITHUB_TOKEN = "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";
+
+	const GITHUB_TOKEN = "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";
 	const URL = filterRep
 		? `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}&order=${filterRep}&sort=repositories`
 		: `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}`;

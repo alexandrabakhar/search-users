@@ -1,5 +1,5 @@
 import * as S from "../../styles/styles";
-import { IModalUserProps } from "../../types/interfaces";
+import { IModalUserProps } from "../../types/Interfaces";
 
 export const ModalUser = ({
 	isOpen,

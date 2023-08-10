@@ -1,4 +1,4 @@
-import { IClassName } from "../../types/interfaces";
+import { IClassName } from "../../types/Interfaces";
 import { User } from "../User/User";
 import * as S from "../../styles/styles";
 import { useAppSelector } from "../../redux/hooks";
@@ -6,7 +6,7 @@ import { Loader } from "../Loader/Loader";
 import { useEffect, useState } from "react";
 import { ModalUser } from "../ModalUser/ModalUser";
 import axios from "axios";
-import { IUser } from "../../types/interfaces";
+import { IUser } from "../../types/Interfaces";
 
 export const Users = ({ className }: IClassName) => {
 	const searchText = useAppSelector((state) => state.filter.search);
@@ -18,7 +18,7 @@ export const Users = ({ className }: IClassName) => {
 	const [currentPage, setCurrentPage] = useState(1);
 	const defaultNameParam = "Q";
 	const name = searchText ? searchText : defaultNameParam;
-	const token = import.meta.env.VITE_TOKEN;
+	const GITHUB_TOKEN = "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";
 	const URL = filterRep
 		? `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}&order=${filterRep}&sort=repositories`
 		: `https://api.github.com/search/users?q=${name}&per_page=30&page=${currentPage}`;
@@ -56,7 +56,7 @@ export const Users = ({ className }: IClassName) => {
 				.get(URL, {
 					headers: {
 						Accept: "application/vnd.github+json",
-						Authorization: `Bearer ${token}`,
+						Authorization: `Bearer ${GITHUB_TOKEN}`,
 						"X-GitHub-Api-Version": "2022-11-28",
 					},
 				})
@@ -66,7 +66,7 @@ export const Users = ({ className }: IClassName) => {
 				})
 				.finally(() => setFetching(false));
 		}
-	}, [URL, fetching, name, token, users]);
+	}, [URL, fetching, name, users]);
 
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalUserContent, setModalUserContent] = useState({} as IUser);

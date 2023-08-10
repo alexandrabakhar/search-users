@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IFilterSliceState } from "../../types/interfaces";
+import { IFilterSliceState } from "../../types/Interfaces";
 
 const initialState: IFilterSliceState = {
 	repositories: "",

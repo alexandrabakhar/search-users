@@ -4,7 +4,7 @@ import { AllProviders } from "../AllProviders";
 import { Search } from "../components/Search/Search";
 
 describe("<Search />", () => {
-	it("The input field and its props", () => {
+	it("Должен быть input", () => {
 		render(
 			<AllProviders>
 				<Search />

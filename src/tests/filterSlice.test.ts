@@ -1,9 +1,12 @@
-import { IFilterSliceState } from "../types/interfaces";
-import reducer, { setSearch, setRepositories } from "../redux/slices/filterSlice";
+import { IFilterSliceState } from "../types/Interfaces";
+import reducer, {
+	setSearch,
+	setRepositories,
+} from "../redux/slices/filterSlice";
 import { describe, expect, it } from "vitest";
 
 describe("filterSlice", () => {
-	it("should return the initial state", () => {
+	it("должно вернуть изначальный state", () => {
 		expect(reducer(undefined, { type: undefined })).toEqual({
 			repositories: "",
 			search: "",

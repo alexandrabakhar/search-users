@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./GlobalStyle";
 import { useAppSelector } from "../redux/hooks";
-import { IPropsChildren } from "../types/interfaces";
+import { IPropsChildren } from "../types/Interfaces";
 
 const brightTheme = {
 	colors: {

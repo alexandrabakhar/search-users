@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IThemeSliceState } from "../../types/interfaces";
-
+import { IThemeSliceState } from "../../types/Interfaces";
 
 const initialState: IThemeSliceState = {
 	theme: "",

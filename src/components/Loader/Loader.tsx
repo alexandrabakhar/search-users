@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { IIsFetching } from "../../types/interfaces";
+import { IIsFetching } from "../../types/Interfaces";
 
 export const Loader = ({ isFetching }: IIsFetching) => {
 	const [filled, setFilled] = useState(0);

@@ -1,9 +1,9 @@
-import { IThemeSliceState } from "../types/interfaces";
+import { IThemeSliceState } from "../types/Interfaces";
 import reducer, { setTheme } from "../redux/slices/themeSlice";
 import { describe, expect, it } from "vitest";
 
 describe("themeSlice", () => {
-	it("должно вернуться initial state", () => {
+	it("должно вернуть изначальный state", () => {
 		expect(reducer(undefined, { type: undefined })).toEqual({
 			theme: "",
 		});
